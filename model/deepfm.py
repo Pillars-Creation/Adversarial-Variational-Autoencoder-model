@@ -13,6 +13,7 @@ class DeepFactorizationMachineModel(torch.nn.Module):
         self.description = {name: (size, type) for name, size, type in description}
         self.item_id_name = item_id_name
         self.build(embed_dim, mlp_dims, dropout)
+        self.immature_emb = torch.nn.ModuleDict()
     
     def build(self, embed_dim, mlp_dims, dropout):
         self.emb_layer = torch.nn.ModuleDict()

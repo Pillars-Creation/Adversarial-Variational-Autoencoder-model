@@ -5,7 +5,7 @@ import os
 import pickle as pkl
 
 
-class CVAEGAN(nn.Module):
+class GAN(nn.Module):
 
     def __init__(self,
                  model: nn.Module,
@@ -16,7 +16,7 @@ class CVAEGAN(nn.Module):
                  emb_dim=16,
                  c_feature='x_fre',
                  c_class_size=19):
-        super(CVAEGAN, self).__init__()
+        super(GAN, self).__init__()
         self.build(model, warm_features, train_loader, device, item_id_name, emb_dim, c_class_size)
         self.c_feature = c_feature
         return

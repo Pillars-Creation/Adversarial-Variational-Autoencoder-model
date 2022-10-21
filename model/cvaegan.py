@@ -43,11 +43,35 @@ class CVAEGAN(nn.Module):
             self.item_features.append(item_f)
         self.origin_item_emb = self.model.emb_layer[self.item_id_name]
 
-        self.mean_encoder = nn.Linear(emb_dim, 16)
-        self.log_v_encoder = nn.Linear(emb_dim, 16)
-        self.mean_encoder_p = nn.Linear(self.output_emb_size, 16)
-        self.log_v_encoder_p = nn.Linear(self.output_emb_size, 16)
-        self.decoder = nn.Linear(17, 16)
+        self.mean_encoder = nn.Sequential(
+            nn.Linear(emb_dim, 16),
+            nn.ReLU(),
+            nn.Linear(16, 8),
+        )
+
+        self.log_v_encoder = nn.Sequential(
+            nn.Linear(emb_dim, 16),
+            nn.ReLU(),
+            nn.Linear(16, 8),
+        )
+
+        self.mean_encoder_p = nn.Sequential(
+            nn.Linear(self.output_emb_size, 16),
+            nn.ReLU(),
+            nn.Linear(16, 8),
+        )
+
+        self.log_v_encoder_p = nn.Sequential(
+            nn.Linear(self.output_emb_size, 16),
+            nn.ReLU(),
+            nn.Linear(16, 8),
+        )
+
+        self.decoder = nn.Sequential(
+            nn.Linear(9, 12),
+            nn.ReLU(),
+            nn.Linear(12, 16),
+        )
 
         self.discriminator = nn.Sequential(
             nn.Linear(16, 32),
@@ -86,6 +110,8 @@ class CVAEGAN(nn.Module):
     def optimize_all(self):
         for name, param in self.named_parameters():
             param.requires_grad_(True)
+
+
 
     def optimizer_cvaegan(self):
         for name, param in self.named_parameters():
