@@ -1,0 +1,12 @@
+*__pycache__/
+chkpt/
+*.csv
+*.gz
+*.pkl
+*.iml
+*.xml
+MovieLen_Model.deepfm
+Ali.deepfm
+datahub/movielens1M/*.pkl
+datahub/taobaoAD/*.pkl
+pretrain_backbones/*
