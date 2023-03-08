@@ -5,7 +5,7 @@
 Overview
 --------
 
-PyTorch implementation of our paper "Learning to Warm Up Cold Item Embeddings for Cold-start Recommendation via Adversarial Variational Autoencoder.
+PyTorch implementation of our paper "Learning to Warm Up Cold Item Embeddings for Cold-start Recommendation via Adversarial Variational Autoencoder"
 
 
 Dependencies
